@@ -80,3 +80,9 @@ jobs:
           path: ${{inputs.working_directory}}/coverage/lcov.info
           exclude: ${{inputs.coverage_excludes}}
           min_coverage: ${{inputs.min_coverage}}
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{inputs.working_directory}}/coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
